@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const menuItems = [
   {
     title: "MENU",
@@ -112,3 +115,23 @@ const menuItems = [
     ],
   },
 ];
+
+const Menu = () => {
+  return (
+    <div className="">
+      {menuItems.map((item) => (
+        <div key={item.title}>
+          <span>{item.title}</span>
+          {item.items.map((item) => (
+            <Link href={item.href} key={item.label} className="flex gap-2">
+              <Image src={item.icon} alt="Icon" width={20} height={20} />
+              <span>{item.label}</span>
+            </Link>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Menu;
